@@ -82,42 +82,52 @@ def memorygame(number):
     i = 1
     score = 0
 
-
     while True:
-        question = y[0:i]
-        round_msg = "Please repeat",question
+        q = y[0:i]
+        round_msg = "Please repeat",q
         # print(y[0:i])
-        return question(round_msg)
-        while time.sleep(3):
+        answer = []
+        while True:
             if number == 'one':
                 answer + [1]
+                t = 0
             elif number == 'two':
                 answer + [2]
+                t = 0
             elif number == 'three':
                 answer + [3]
+                t = 0
             elif number == 'four':
                 answer + [4]
+                t = 0
             elif number == 'five':
                 answer + [5]
+                t = 0
             elif number == 'six':
                 answer + [6]
+                t = 0
             elif number == 'seven':
                 answer + [7]
+                t = 0
             elif number == 'eight':
                 answer + [8]
+                t = 0
             elif number == 'nine':
                 answer + [9]      
+                t = 0
+            elif time.sleep(t=2):
+                break
         # answer += [int(x) for x in input().split()]
         # print(answer)
 
-        if answer == question:
+        if answer == q:
             msg = "Correct"
             score += 1
             i += 1
         else: 
             msg = "Wrong answer"
             break
-        if  (question == [90]):
+        if  (q == [90]):
             print("You beat the game, congratulations.")
             break
 
