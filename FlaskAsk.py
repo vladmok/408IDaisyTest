@@ -75,7 +75,7 @@ def move(direction):
     return statement(msg)
 
 @ask.intent("MemoryIntent")
-def memorygame():
+def memorygame(number):
     numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]*10
     y = sample(numbers, 90)    # Generate 90 random numbers
     msg = "Beginning memory game."
@@ -84,8 +84,28 @@ def memorygame():
 
     while answer == True:
         question = y[0:i]
-        print(y[0:i])
-        answer = [int(x) for x in input().split()]
+        # print(y[0:i])
+        while time.sleep(2):
+            if number == 'one':
+                answer + [1]
+            elif number == 'two':
+                answer + [2]
+            elif number == 'three':
+                answer + [3]
+            elif number == 'four':
+                answer + [4]
+            elif number == 'five':
+                answer + [5]
+            elif number == 'six':
+                answer + [6]
+            elif number == 'seven':
+                answer + [7]
+            elif number == 'eight':
+                answer + [8]
+            elif number == 'nine':
+                answer + [9]      
+
+        # answer += [int(x) for x in input().split()]
         print(answer)
 
         if answer == question:
