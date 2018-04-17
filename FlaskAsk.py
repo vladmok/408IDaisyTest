@@ -1,10 +1,12 @@
 import logging
 import time
 import serial
+import signal
 from flask import Flask, render_template
 from flask_ask import Ask, statement, question
 from random import *
 
+TIMEOUT = 3
 app = Flask(__name__)
 ask = Ask(app, "/")
 
@@ -93,29 +95,29 @@ def memorygame(number):
                 t = 0
             elif number == 'two':
                 answer + [2]
-                t = 0
+                signal.alarm(0)
             elif number == 'three':
                 answer + [3]
-                t = 0
+                signal.alarm(0)
             elif number == 'four':
                 answer + [4]
-                t = 0
+                signal.alarm(0)
             elif number == 'five':
                 answer + [5]
-                t = 0
+                signal.alarm(0)
             elif number == 'six':
                 answer + [6]
-                t = 0
+                signal.alarm(0)
             elif number == 'seven':
                 answer + [7]
-                t = 0
+                signal.alarm(0)
             elif number == 'eight':
                 answer + [8]
-                t = 0
+                signal.alarm(0)
             elif number == 'nine':
                 answer + [9]      
-                t = 0
-            elif time.sleep(t=2):
+                signal.alarm(0)
+            elif signal.alarn(TIMEOUT)
                 break
         # answer += [int(x) for x in input().split()]
         # print(answer)
