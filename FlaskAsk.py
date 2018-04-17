@@ -78,14 +78,17 @@ def move(direction):
 def memorygame(number):
     numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]*10
     y = sample(numbers, 90)    # Generate 90 random numbers
-    msg = "Beginning memory game."
+    round_msg = "Beginning memory game."
     i = 1
     score = 0
 
-    while answer == True:
+
+    while True:
         question = y[0:i]
+        round_msg = "Please repeat",question
         # print(y[0:i])
-        while time.sleep(2):
+        return question(round_msg)
+        while time.sleep(3):
             if number == 'one':
                 answer + [1]
             elif number == 'two':
@@ -104,19 +107,16 @@ def memorygame(number):
                 answer + [8]
             elif number == 'nine':
                 answer + [9]      
-
         # answer += [int(x) for x in input().split()]
-        print(answer)
+        # print(answer)
 
         if answer == question:
             msg = "Correct"
             score += 1
             i += 1
-
         else: 
             msg = "Wrong answer"
             break
-
         if  (question == [90]):
             print("You beat the game, congratulations.")
             break
