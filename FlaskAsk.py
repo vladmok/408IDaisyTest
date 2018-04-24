@@ -92,32 +92,32 @@ def memorygame(number):
         while True:
             if number == 'one':
                 answer + [1]
-                t = 0
+                t = now.second
             elif number == 'two':
                 answer + [2]
-                signal.alarm(0)
+                t = now.second                
             elif number == 'three':
                 answer + [3]
-                signal.alarm(0)
+                t = now.second
             elif number == 'four':
                 answer + [4]
-                signal.alarm(0)
+                t = now.second
             elif number == 'five':
                 answer + [5]
-                signal.alarm(0)
+                t = now.second
             elif number == 'six':
                 answer + [6]
-                signal.alarm(0)
+                t = now.second
             elif number == 'seven':
                 answer + [7]
-                signal.alarm(0)
+                t = now.second
             elif number == 'eight':
                 answer + [8]
-                signal.alarm(0)
+                t = now.second
             elif number == 'nine':
                 answer + [9]      
-                signal.alarm(0)
-            elif signal.alarn(TIMEOUT)
+                t = now.second
+            elif t = now.second + 5:
                 break
         # answer += [int(x) for x in input().split()]
         # print(answer)
