@@ -117,23 +117,21 @@ def memorygame(number):
             elif number == 'nine':
                 answer + [9]      
                 t = now.second
-            elif t = now.second + 5:
+            elif t = now.second + 3:
                 break
         # answer += [int(x) for x in input().split()]
         # print(answer)
 
         if answer == q:
-            msg = "Correct"
             score += 1
             i += 1
         else: 
-            msg = "Wrong answer"
+            msg = "Incorrect answer, your final score is",score
             break
         if  (q == [90]):
             print("You beat the game, congratulations.")
             break
-
-    return statement(score)
+    return statement(msg)
 
 
 @ask.intent("AMAZON.StopIntent")
