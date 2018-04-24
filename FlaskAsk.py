@@ -117,7 +117,7 @@ def memorygame(number):
             elif number == 'nine':
                 answer + [9]      
                 t = now.second
-            elif t = now.second + 3:
+            elif t == now.second + 3:
                 break
         # answer += [int(x) for x in input().split()]
         # print(answer)
