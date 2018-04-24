@@ -1,10 +1,11 @@
 import logging
-import time
 import serial
 import signal
 from flask import Flask, render_template
 from flask_ask import Ask, statement, question
 from random import *
+from datetime import timedelta, datetime
+import time
 
 TIMEOUT = 3
 app = Flask(__name__)
@@ -80,59 +81,60 @@ def move(direction):
 def memorygame(number):
     numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]*10
     y = sample(numbers, 90)    # Generate 90 random numbers
-    round_msg = "Beginning memory game."
+    # round_msg = "Beginning memory game."
     i = 1
     score = 0
 
-    while True:
-        q = y[0:i]
-        round_msg = "Please repeat",q
-        # print(y[0:i])
-        answer = []
-        while True:
-            if number == 'one':
-                answer + [1]
-                t = now.second
-            elif number == 'two':
-                answer + [2]
-                t = now.second                
-            elif number == 'three':
-                answer + [3]
-                t = now.second
-            elif number == 'four':
-                answer + [4]
-                t = now.second
-            elif number == 'five':
-                answer + [5]
-                t = now.second
-            elif number == 'six':
-                answer + [6]
-                t = now.second
-            elif number == 'seven':
-                answer + [7]
-                t = now.second
-            elif number == 'eight':
-                answer + [8]
-                t = now.second
-            elif number == 'nine':
-                answer + [9]      
-                t = now.second
-            elif t == now.second + 3:
-                break
-        # answer += [int(x) for x in input().split()]
-        # print(answer)
+    q = y[0:i]
+    round_msg = "Please repeat",q
+    return statement(round_msg)
+    
+@ask.intent("AnswerIntent")
+answer = []
+endtime = datetime.utcnow() + timedelta(seconds = 5)
+while True:
+    if number == 'one':
+        answer + [1]
+        endtime = endtime + timedelta(seconds = 2)
+    elif number == 'two':
+        answer + [2]
+        endtime = endtime + timedelta(seconds = 2)          
+    elif number == 'three':
+        answer + [3]
+        endtime = endtime + timedelta(seconds = 2)
+    elif number == 'four':
+        answer + [4]
+        endtime = endtime + timedelta(seconds = 2)
+    elif number == 'five':
+        answer + [5]
+        endtime = endtime + timedelta(seconds = 2)
+    elif number == 'six':
+        answer + [6]
+        endtime = endtime + timedelta(seconds = 2)
+    elif number == 'seven':
+        answer + [7]
+        endtime = endtime + timedelta(seconds = 2)
+    elif number == 'eight':
+        answer + [8]
+        endtime = endtime + timedelta(seconds = 2)
+    elif number == 'nine':
+        answer + [9]      
+        endtime = endtime + timedelta(seconds = 2)
+    elif datetime.utcnow() > endtime:
+        break
+# answer += [int(x) for x in input().split()]
+# print(answer)
 
-        if answer == q:
-            score += 1
-            i += 1
-        else: 
-            msg = "Incorrect answer, your final score is",score
-            break
-        if  (q == [90]):
-            print("You beat the game, congratulations.")
-            break
-    return statement(msg)
-
+if answer == q:
+    score += 1
+    i += 1
+else: 
+    msg = "Incorrect answer, your final score is",score
+    break
+if  (q == [90]):
+    print("You beat the game, congratulations.")
+    break
+return statement(msg)
 
 @ask.intent("AMAZON.StopIntent")
 def stop():
